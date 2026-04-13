@@ -1,0 +1,140 @@
+<section class="story" id="histoire" aria-labelledby="story-heading">
+  <div class="container">
+    <div class="story-layout">
+      <div class="story-visual" aria-hidden="true" data-reveal="scale">
+        <div class="story-mosaic">
+          <div class="mosaic-tile tile-1"></div>
+          <div class="mosaic-tile tile-2"></div>
+          <div class="mosaic-tile tile-3"></div>
+          <div class="mosaic-tile tile-4"></div>
+          <div class="mosaic-tile tile-5"></div>
+          <div class="mosaic-tile tile-6"></div>
+          <div class="mosaic-tile tile-7"></div>
+          <div class="mosaic-tile tile-8"></div>
+          <div class="mosaic-tile tile-9"></div>
+        </div>
+      </div>
+
+      <div class="story-text" data-reveal="right">
+        <p class="section-subtitle" style="text-align:left">Notre histoire</p>
+        <h2 id="story-heading" class="section-label" style="text-align:left">
+          Le goût authentique,<br />au cœur de Lyon 3
+        </h2>
+        <div class="story-body">
+          <p>
+            Chez Mosaique, chaque jour commence pareil : la broche tourne,
+            les frites sont coupées à la main, le pain est pétri et cuit
+            sur place. Pas de raccourcis, pas de surgelés.
+          </p>
+          <p>
+            Notre secret ? Des recettes transmises avec soin, des
+            ingrédients sélectionnés chaque matin, et une équipe qui met
+            du cœur dans chaque assiette. Du kebab classique aux
+            spécialités comme l'Adana ou le Köfte, on cuisine ce qu'on
+            aime manger.
+          </p>
+          <p>
+            Depuis le 42 avenue Félix Faure, on régale le quartier — et
+            au-delà. Passez nous voir, on vous accueille avec le sourire
+            et un thé.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .story {
+    padding-block: var(--space-section);
+    background: var(--color-charcoal-mid);
+  }
+
+  .story-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .story-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-md);
+  }
+
+  .story-mosaic {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    width: clamp(180px, 22vw, 280px);
+    aspect-ratio: 1;
+  }
+
+  .mosaic-tile {
+    border-radius: 4px;
+    transition: transform var(--duration-normal) var(--ease-out-expo);
+  }
+
+  .mosaic-tile:hover {
+    transform: scale(1.08);
+  }
+
+  .tile-1 { background: var(--color-amber); opacity: 0.9; }
+  .tile-2 { background: var(--color-red); opacity: 0.7; }
+  .tile-3 { background: var(--color-amber-dark); opacity: 0.8; }
+  .tile-4 { background: var(--color-red-light); opacity: 0.6; }
+  .tile-5 { background: var(--color-amber-light); opacity: 1; }
+  .tile-6 { background: var(--color-red); opacity: 0.5; }
+  .tile-7 { background: var(--color-amber-dark); opacity: 0.7; }
+  .tile-8 { background: var(--color-amber); opacity: 0.6; }
+  .tile-9 { background: var(--color-red-light); opacity: 0.8; }
+
+  .story-text {
+    max-width: 36rem;
+  }
+
+  .story-text .section-subtitle {
+    text-align: left;
+  }
+
+  .story .section-label {
+    color: var(--color-cream);
+  }
+
+  .story-body {
+    margin-top: var(--space-md);
+  }
+
+  .story-body p {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+  }
+
+  .story-body p + p {
+    margin-top: var(--space-sm);
+  }
+
+  @media (max-width: 768px) {
+    .story-layout {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .story-text .section-subtitle,
+    .story-text .section-label {
+      text-align: center;
+    }
+
+    .story-visual {
+      order: -1;
+      padding: 0;
+    }
+
+    .story-mosaic {
+      width: 180px;
+      margin-inline: auto;
+    }
+  }
+</style>

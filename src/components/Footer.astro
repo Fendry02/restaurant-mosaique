@@ -1,0 +1,106 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer-inner container">
+    <div class="footer-brand">
+      <span class="footer-logo">Mosaique</span>
+      <p class="footer-tagline">Kebab & Grillades</p>
+    </div>
+
+    <div class="footer-info">
+      <address class="footer-address">
+        42 avenue Félix Faure<br />
+        69003 Lyon
+      </address>
+      <a href="tel:+33478177487" class="footer-phone">04 78 17 74 87</a>
+    </div>
+
+    <div class="footer-hours">
+      <p><strong>Lundi — Samedi</strong><br />11h – 23h</p>
+      <p><strong>Dimanche</strong><br />Fermé</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom container">
+    <p>&copy; {year} Restaurant Mosaique. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #0f0d0b;
+    color: rgba(245, 240, 232, 0.6);
+    padding-top: var(--space-xl);
+    padding-bottom: var(--space-md);
+    margin-top: var(--space-section);
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    padding-bottom: var(--space-lg);
+    border-bottom: 1px solid rgba(232, 148, 58, 0.1);
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--color-amber);
+    display: block;
+  }
+
+  .footer-tagline {
+    font-size: var(--text-sm);
+    margin-top: var(--space-xs);
+    color: rgba(245, 240, 232, 0.4);
+  }
+
+  .footer-address {
+    font-style: normal;
+    line-height: 1.7;
+  }
+
+  .footer-phone {
+    display: inline-block;
+    margin-top: var(--space-xs);
+    color: rgba(245, 240, 232, 0.4);
+    font-weight: 500;
+    transition: color var(--duration-fast) ease;
+  }
+
+  .footer-phone:hover {
+    color: var(--color-amber);
+  }
+
+  .footer-hours p {
+    line-height: 1.7;
+  }
+
+  .footer-hours p + p {
+    margin-top: var(--space-xs);
+  }
+
+  .footer-hours strong {
+    color: rgba(245, 240, 232, 0.8);
+    font-weight: 500;
+  }
+
+  .footer-bottom {
+    padding-top: var(--space-md);
+    font-size: var(--text-xs);
+    color: rgba(245, 240, 232, 0.25);
+  }
+
+  @media (max-width: 768px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+      text-align: center;
+    }
+  }
+</style>

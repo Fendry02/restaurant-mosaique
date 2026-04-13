@@ -1,0 +1,168 @@
+<section class="reviews" id="avis" aria-labelledby="reviews-heading">
+  <div class="container">
+    <p class="section-subtitle">Ce qu'ils en disent</p>
+    <h2 id="reviews-heading" class="section-label">4.3 sur 5 — plus de 3 600 avis</h2>
+
+    <div class="reviews-rating" data-reveal="up">
+      <div class="reviews-stars" aria-label="4.3 sur 5 étoiles">
+        {Array.from({length: 4}).map(() => (
+          <svg viewBox="0 0 20 20" fill="currentColor" class="star"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78z"/></svg>
+        ))}
+        <svg viewBox="0 0 20 20" class="star star--partial">
+          <defs><linearGradient id="star-fill"><stop offset="30%" stop-color="currentColor"/><stop offset="30%" stop-color="transparent"/></linearGradient></defs>
+          <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78z" fill="url(#star-fill)" stroke="currentColor" stroke-width="0.8"/>
+        </svg>
+      </div>
+      <p class="reviews-count">3 600+ avis Google</p>
+    </div>
+
+    <div class="reviews-grid">
+      <blockquote class="review-card" data-reveal="up">
+        <div class="review-stars" aria-hidden="true">
+          {Array.from({length: 5}).map(() => (
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78z"/></svg>
+          ))}
+        </div>
+        <p class="review-text">
+          Jamais une fausse note, toujours la même qualité irréprochable. La viande est parfaitement grillée et les sauces sont faites maison. Mon kebab préféré à Lyon, et de loin !
+        </p>
+        <footer class="review-author">
+          <span class="review-name">Client fidèle</span>
+          <span class="review-date">Avis Google</span>
+        </footer>
+      </blockquote>
+
+      <blockquote class="review-card" data-reveal="up">
+        <div class="review-stars" aria-hidden="true">
+          {Array.from({length: 5}).map(() => (
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78z"/></svg>
+          ))}
+        </div>
+        <p class="review-text">
+          Très propre, employés chaleureux. Les portions sont très généreuses et les frites sont vraiment faites maison. Le thé offert avec le menu, c'est un vrai plus !
+        </p>
+        <footer class="review-author">
+          <span class="review-name">Client Google</span>
+          <span class="review-date">Avis Google</span>
+        </footer>
+      </blockquote>
+
+      <blockquote class="review-card" data-reveal="up">
+        <div class="review-stars" aria-hidden="true">
+          {Array.from({length: 5}).map(() => (
+            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78z"/></svg>
+          ))}
+        </div>
+        <p class="review-text">
+          Le meilleur kebab de Lyon, je ne dis pas ça à la légère. La viande est grillée et agréablement assaisonnée, le pain est chaud et croustillant. On y revient toujours.
+        </p>
+        <footer class="review-author">
+          <span class="review-name">Client Google</span>
+          <span class="review-date">Avis Google</span>
+        </footer>
+      </blockquote>
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews {
+    padding-block: var(--space-section);
+    background: var(--color-charcoal);
+  }
+
+  .reviews-rating {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+  }
+
+  .reviews-stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    color: var(--color-amber);
+    margin-bottom: var(--space-xs);
+  }
+
+  .reviews-stars .star {
+    width: 28px;
+    height: 28px;
+  }
+
+  .reviews-count {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+  }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .review-card {
+    background: var(--color-charcoal-mid);
+    border: 1px solid rgba(232, 148, 58, 0.1);
+    border-radius: 12px;
+    padding: var(--space-md) var(--space-md) var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    transition: transform var(--duration-normal) var(--ease-out-expo),
+                border-color var(--duration-normal) ease;
+  }
+
+  .review-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(232, 148, 58, 0.25);
+  }
+
+  .review-stars {
+    display: flex;
+    gap: 0.15rem;
+    color: var(--color-amber);
+  }
+
+  .review-stars svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .review-text {
+    font-size: var(--text-base);
+    color: var(--color-text-muted);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    padding-top: var(--space-xs);
+    border-top: 1px solid rgba(245, 240, 232, 0.08);
+  }
+
+  .review-name {
+    font-weight: 500;
+    font-size: var(--text-sm);
+    color: var(--color-cream);
+  }
+
+  .review-date {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+  }
+
+  .review-date::before {
+    content: "·";
+    margin-right: 0.25rem;
+  }
+
+  @media (max-width: 768px) {
+    .reviews-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,30 @@
+<!-- Decorative kebab skewer divider -->
+<div class="divider" aria-hidden="true">
+  <svg class="divider-svg" viewBox="0 0 800 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Skewer line -->
+    <line x1="100" y1="20" x2="700" y2="20" stroke="var(--color-amber)" stroke-width="1.5" opacity="0.3" stroke-linecap="round"/>
+    <!-- Decorative dots -->
+    <circle cx="200" cy="20" r="4" fill="var(--color-amber)" opacity="0.2"/>
+    <circle cx="300" cy="20" r="3" fill="var(--color-red)" opacity="0.2"/>
+    <circle cx="400" cy="20" r="5" fill="var(--color-amber)" opacity="0.25"/>
+    <circle cx="500" cy="20" r="3" fill="var(--color-red)" opacity="0.2"/>
+    <circle cx="600" cy="20" r="4" fill="var(--color-amber)" opacity="0.2"/>
+    <!-- Diamond accents -->
+    <rect x="147" y="17" width="6" height="6" rx="1" transform="rotate(45 150 20)" fill="var(--color-amber)" opacity="0.15"/>
+    <rect x="647" y="17" width="6" height="6" rx="1" transform="rotate(45 650 20)" fill="var(--color-amber)" opacity="0.15"/>
+  </svg>
+</div>
+
+<style>
+  .divider {
+    display: flex;
+    justify-content: center;
+    padding-block: var(--space-sm);
+    overflow: hidden;
+  }
+
+  .divider-svg {
+    width: clamp(300px, 70vw, 800px);
+    height: auto;
+  }
+</style>

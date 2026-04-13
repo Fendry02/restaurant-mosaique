@@ -1,0 +1,250 @@
+---
+interface MenuItem {
+  name: string;
+  price?: string;
+  description?: string;
+  tag?: string;
+}
+
+interface MenuCategory {
+  title: string;
+  icon: string;
+  items: MenuItem[];
+}
+
+const categories: MenuCategory[] = [
+  {
+    title: 'Sandwichs',
+    icon: '🥖',
+    items: [
+      { name: 'Kebab', description: 'Viande à la broche, salade, tomates, oignons, sauce au choix' },
+      { name: 'Américain', description: 'Steak haché, frites, salade, sauce au choix' },
+      { name: 'Nuggets', description: 'Nuggets de poulet, salade, sauce au choix' },
+      { name: 'Féta', description: 'Kebab, féta, salade, tomates, sauce au choix' },
+      { name: 'Bacon', description: 'Kebab, bacon, salade, sauce au choix' },
+      { name: 'Burger', description: 'Steak, salade, tomates, oignons, cheddar, sauce au choix' },
+      { name: 'Fish', description: 'Poisson pané, salade, sauce tartare' },
+      { name: 'Köfte', description: 'Boulettes de viande grillées, salade, sauce au choix' },
+      { name: 'Brochette', description: 'Brochette de poulet ou viande, salade, sauce au choix' },
+      { name: 'Galette', description: 'Galette garnie kebab, salade, sauce au choix' },
+      { name: 'Steak', description: 'Steak grillé, salade, sauce au choix' },
+    ],
+  },
+  {
+    title: 'Assiettes',
+    icon: '🍽️',
+    items: [
+      { name: 'Kebab', description: 'Viande à la broche, riz ou frites, salade', tag: 'Populaire' },
+      { name: 'Mixte', description: 'Kebab + brochette, riz ou frites, salade', tag: 'Généreux' },
+      { name: 'Adana', description: 'Brochette Adana épicée, riz ou frites, salade' },
+      { name: 'Bouchon', description: 'Spécialité bouchon lyonnais, riz ou frites, salade' },
+      { name: 'Lafi', description: 'Galette garnie de viande, riz ou frites, salade' },
+      { name: 'Brochette', description: 'Brochettes grillées, riz ou frites, salade' },
+      { name: 'Barquettes', description: 'Frites garnies de viande et sauce' },
+    ],
+  },
+];
+---
+
+<section class="menu" id="carte" aria-labelledby="menu-heading">
+  <div class="container">
+    <header class="menu-header" data-reveal>
+      <p class="section-subtitle">Notre carte</p>
+      <h2 id="menu-heading" class="section-label">Fait maison, fait avec passion</h2>
+      <p class="menu-tagline">
+        Viande grillée à la broche chaque jour, frites fraîches coupées sur place,<br />
+        pain cuit au moment. Thé offert avec chaque menu.
+      </p>
+    </header>
+
+    {categories.map((cat) => (
+      <div class="menu-category" data-reveal>
+        <h3 class="category-title">
+          <span class="category-icon" aria-hidden="true">{cat.icon}</span>
+          {cat.title}
+        </h3>
+        <div class="menu-grid" role="list" data-reveal-stagger>
+          {cat.items.map((item) => (
+            <article class="item-card" role="listitem">
+              <div class="item-header">
+                <h4 class="item-name">
+                  {item.name}
+                  {item.tag && <span class="item-tag">{item.tag}</span>}
+                </h4>
+                {item.price && (
+                  <span class="item-price" aria-label={`${item.price} euros`}>
+                    {item.price}€
+                  </span>
+                )}
+              </div>
+              {item.description && <p class="item-desc">{item.description}</p>}
+            </article>
+          ))}
+          {cat.items.length % 2 !== 0 && <div class="item-card item-card--empty" aria-hidden="true"></div>}
+        </div>
+      </div>
+    ))}
+
+    <div class="menu-note" data-reveal>
+      <p class="menu-note-text">
+        Les prix seront ajoutés prochainement. N'hésitez pas à nous appeler pour connaître nos tarifs.
+      </p>
+      <a href="tel:+33478177487" class="menu-note-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        04 78 17 74 87
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu {
+    padding-block: var(--space-section);
+    background: var(--color-charcoal-mid);
+  }
+
+  .menu-header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .menu-tagline {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    margin-top: var(--space-sm);
+    line-height: 1.7;
+  }
+
+  .menu-category {
+    margin-bottom: var(--space-xl);
+  }
+
+  .menu-category:last-of-type {
+    margin-bottom: var(--space-lg);
+  }
+
+  .category-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-cream);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid rgba(232, 148, 58, 0.2);
+  }
+
+  .category-icon {
+    font-size: 1.2em;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(232, 148, 58, 0.1);
+    border: 1px solid rgba(232, 148, 58, 0.1);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .item-card {
+    background: var(--color-charcoal-mid);
+    padding: var(--space-md);
+    transition: background var(--duration-fast) ease;
+  }
+
+  .item-card:hover {
+    background: var(--color-charcoal-light);
+  }
+
+  .item-card--empty {
+    background: var(--color-charcoal-mid);
+    pointer-events: none;
+  }
+
+  .item-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-bottom: 0.35rem;
+  }
+
+  .item-name {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-cream);
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .item-tag {
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    background: var(--color-amber);
+    color: var(--color-charcoal);
+    padding: 0.15rem 0.5rem;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+
+  .item-price {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    color: var(--color-amber);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .item-desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  .menu-note {
+    text-align: center;
+    padding: var(--space-md);
+    background: rgba(232, 148, 58, 0.06);
+    border: 1px dashed rgba(232, 148, 58, 0.25);
+    border-radius: var(--radius-lg);
+  }
+
+  .menu-note-text {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  .menu-note-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: var(--space-sm);
+    font-weight: 500;
+    color: var(--color-amber);
+    transition: color var(--duration-fast) ease;
+  }
+
+  .menu-note-cta:hover {
+    color: var(--color-amber-light);
+  }
+
+  @media (max-width: 640px) {
+    .menu-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

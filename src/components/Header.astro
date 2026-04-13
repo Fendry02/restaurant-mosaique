@@ -1,0 +1,216 @@
+---
+const navItems = [
+  { label: 'La Carte', href: '#carte' },
+  { label: 'Avis', href: '#avis' },
+  { label: 'Notre Histoire', href: '#histoire' },
+  { label: 'Nous Trouver', href: '#contact' },
+];
+---
+
+<header class="header" id="top">
+  <div class="header-inner container">
+    <a href="#top" class="logo" aria-label="Restaurant Mosaique — Retour en haut">
+      <span class="logo-text">Mosaique</span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="nav-menu"
+    >
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+    </button>
+
+    <nav id="nav-menu" class="nav" aria-label="Navigation principale">
+      <ul class="nav-list">
+        {navItems.map(({ label, href }) => (
+          <li>
+            <a href={href} class="nav-link">{label}</a>
+          </li>
+        ))}
+      </ul>
+      <a href="tel:+33478177487" class="nav-cta">04 78 17 74 87</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(26, 23, 20, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(232, 148, 58, 0.1);
+    transition: background var(--duration-normal) ease;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4.5rem;
+  }
+
+  .logo-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-cream);
+    transition: color var(--duration-fast) ease;
+  }
+
+  .logo:hover .logo-text {
+    color: var(--color-amber);
+  }
+
+  .nav-list {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+  }
+
+  .nav-link {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--color-text-muted);
+    padding: var(--space-xs) 0;
+    position: relative;
+    transition: color var(--duration-fast) ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-amber);
+    transition: width var(--duration-normal) var(--ease-out-expo);
+  }
+
+  .nav-link:hover {
+    color: var(--color-cream);
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+
+  .nav-cta {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-amber);
+    padding: 0.5rem 1.25rem;
+    border: 1.5px solid var(--color-amber);
+    border-radius: 100px;
+    transition: all var(--duration-fast) ease;
+  }
+
+  .nav-cta:hover {
+    background: var(--color-amber);
+    color: var(--color-charcoal);
+    border-color: var(--color-amber);
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .menu-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-cream);
+    border-radius: 2px;
+    transition: transform var(--duration-normal) var(--ease-out-expo),
+                opacity var(--duration-fast) ease;
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+
+    .nav {
+      position: fixed;
+      top: 4.5rem;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-top: var(--space-lg);
+      gap: var(--space-md);
+      background: rgba(26, 23, 20, 0.98);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-8px);
+      transition: opacity var(--duration-normal) ease,
+                  transform var(--duration-normal) var(--ease-out-expo);
+    }
+
+    .nav.is-open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .nav-list {
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+
+    .nav-link {
+      font-size: var(--text-lg);
+    }
+
+    .menu-toggle[aria-expanded='true'] .menu-bar:first-child {
+      transform: translateY(4px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded='true'] .menu-bar:last-child {
+      transform: translateY(-4px) rotate(-45deg);
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('#nav-menu');
+  const links = nav?.querySelectorAll('.nav-link');
+
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    nav?.classList.toggle('is-open');
+  });
+
+  links?.forEach((link) => {
+    link.addEventListener('click', () => {
+      toggle?.setAttribute('aria-expanded', 'false');
+      nav?.classList.remove('is-open');
+    });
+  });
+</script>

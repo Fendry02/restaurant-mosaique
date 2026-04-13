@@ -1,0 +1,97 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Restaurant Mosaique — Kebab & Grillades | Lyon 3',
+  description = 'Kebab artisanal, grillades et spécialités turques au 42 avenue Félix Faure, Lyon 3e. Viande à la broche, frites maison, pain fait maison.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#1a1714" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Restaurant Mosaique" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+
+    <!-- Fonts -->
+    <style>
+      @import '@fontsource/outfit/400.css';
+      @import '@fontsource/outfit/500.css';
+      @import '@fontsource/outfit/700.css';
+      @import '@fontsource/playfair-display/700.css';
+      @import '@fontsource/playfair-display/700-italic.css';
+    </style>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Restaurant Mosaique",
+      "description": "Kebab artisanal, grillades et spécialités turques à Lyon 3e. Viande à la broche, frites maison, pain fait maison.",
+      "image": [],
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "42 avenue Félix Faure",
+        "addressLocality": "Lyon",
+        "postalCode": "69003",
+        "addressRegion": "Auvergne-Rhône-Alpes",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 45.7526128,
+        "longitude": 4.8519206
+      },
+      "telephone": "+33478177487",
+      "servesCuisine": ["Kebab", "Turque", "Grillades", "Halal"],
+      "priceRange": "€",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "Cash, Visa, Ticket Restaurant",
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "11:00", "closes": "23:00" }
+      ],
+      "hasMenu": {
+        "@type": "Menu",
+        "hasMenuSection": [
+          {
+            "@type": "MenuSection",
+            "name": "Sandwichs",
+            "hasMenuItem": [
+              { "@type": "MenuItem", "name": "Kebab", "offers": { "@type": "Offer", "price": "5", "priceCurrency": "EUR" } }
+            ]
+          }
+        ]
+      }
+    })} />
+  </head>
+  <body>
+    <slot />
+    <script>
+      import '../scripts/reveal.ts';
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+</style>

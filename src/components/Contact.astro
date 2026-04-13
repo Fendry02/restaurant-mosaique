@@ -1,0 +1,228 @@
+<section class="contact" id="contact" aria-labelledby="contact-heading">
+  <div class="container">
+    <header class="contact-header" data-reveal>
+      <p class="section-subtitle">Nous trouver</p>
+      <h2 id="contact-heading" class="section-label">
+        Passez nous voir
+      </h2>
+    </header>
+
+    <div class="contact-grid" data-reveal-stagger>
+      <!-- Horaires -->
+      <div class="contact-card">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Horaires</h3>
+        <div class="hours-list">
+          <div class="hours-row">
+            <span class="hours-days">Lundi — Samedi</span>
+            <span class="hours-time">11h – 23h</span>
+          </div>
+          <div class="hours-row hours-closed">
+            <span class="hours-days">Dimanche</span>
+            <span class="hours-time">Fermé</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Adresse -->
+      <div class="contact-card">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Adresse</h3>
+        <address class="card-address">
+          42 avenue Félix Faure<br />
+          69003 Lyon
+        </address>
+        <a
+          href="https://www.google.com/maps/place/Restaurant+mosaique+LYON+3+EME/@45.7526128,4.8519206,17z/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="card-link"
+        >
+          Ouvrir dans Google Maps
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Contact -->
+      <div class="contact-card">
+        <div class="card-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+        <h3 class="card-title">Contact</h3>
+        <a href="tel:+33478177487" class="card-phone">04 78 17 74 87</a>
+        <div class="card-services">
+          <span class="service-badge">Sur place</span>
+          <span class="service-badge">À emporter</span>
+          <span class="service-badge">Livraison</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map embed -->
+    <div class="map-wrapper" data-reveal="scale">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d694.3!2d4.8519206!3d45.7526128!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4ea688a4ef0d3%3A0xd3f0f59a617978cd!2sRestaurant%20mosaique%20LYON%203%20EME!5e0!3m2!1sfr!2sfr!4v1"
+        width="100%"
+        height="400"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Restaurant Mosaique sur Google Maps"
+      ></iframe>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding-block: var(--space-section);
+    background: var(--color-charcoal);
+  }
+
+  .contact-header {
+    margin-bottom: var(--space-xl);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+
+  .contact-card {
+    background: var(--color-charcoal-mid);
+    border: 1px solid rgba(232, 148, 58, 0.1);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    transition: border-color var(--duration-fast) ease;
+  }
+
+  .contact-card:hover {
+    border-color: rgba(232, 148, 58, 0.25);
+  }
+
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(232, 148, 58, 0.1);
+    border-radius: 12px;
+    color: var(--color-amber);
+    margin-bottom: var(--space-sm);
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--color-cream);
+    margin-bottom: var(--space-sm);
+  }
+
+  .hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  .hours-days {
+    font-weight: 500;
+    color: var(--color-cream);
+  }
+
+  .hours-closed {
+    opacity: 0.5;
+  }
+
+  .card-address {
+    font-style: normal;
+    color: var(--color-text-muted);
+    line-height: 1.7;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: var(--space-sm);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-amber);
+    transition: color var(--duration-fast) ease;
+  }
+
+  .card-link:hover {
+    color: var(--color-amber-light);
+  }
+
+  .card-phone {
+    display: block;
+    font-size: var(--text-lg);
+    font-weight: 500;
+    color: var(--color-cream);
+    margin-bottom: var(--space-sm);
+    transition: color var(--duration-fast) ease;
+  }
+
+  .card-phone:hover {
+    color: var(--color-amber);
+  }
+
+  .card-services {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .service-badge {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    color: var(--color-text-muted);
+    padding: 0.2rem 0.6rem;
+    border: 1px solid rgba(245, 240, 232, 0.12);
+    border-radius: 100px;
+  }
+
+  .map-wrapper {
+    margin-top: var(--space-lg);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid rgba(232, 148, 58, 0.1);
+  }
+
+  .map-wrapper iframe {
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
