@@ -16,11 +16,32 @@
     </p>
     <div class="hero-actions hero-anim" style="--delay: 0.8s">
       <a href="#carte" class="btn btn-primary">Voir la carte</a>
-      <a href="tel:+33478177487" class="btn btn-outline">Appeler</a>
+      <a href="tel:+33478177487" class="btn btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        Appeler
+      </a>
+    </div>
+
+    <!-- Delivery platforms -->
+    <div class="hero-delivery hero-anim" style="--delay: 0.9s">
+      <span class="delivery-label">Commander en ligne</span>
+      <div class="delivery-links">
+        <a href="https://www.ubereats.com" target="_blank" rel="noopener noreferrer" class="delivery-btn">
+          <span class="delivery-name">Uber Eats</span>
+        </a>
+        <a href="https://deliveroo.fr" target="_blank" rel="noopener noreferrer" class="delivery-btn">
+          <span class="delivery-name">Deliveroo</span>
+        </a>
+      </div>
     </div>
 
     <div class="hero-badges hero-anim" style="--delay: 1s">
-      <span class="badge">Halal</span>
+      <span class="badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Halal
+      </span>
       <span class="badge">Sur place & à emporter</span>
       <span class="badge">Livraison</span>
     </div>
@@ -154,6 +175,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.4rem;
     font-family: var(--font-body);
     font-size: var(--text-sm);
     font-weight: 500;
@@ -187,6 +209,49 @@
     transform: translateY(-1px);
   }
 
+  /* ─── Delivery ─── */
+  .hero-delivery {
+    margin-top: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .delivery-label {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .delivery-links {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .delivery-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    background: rgba(245, 240, 232, 0.08);
+    border: 1px solid rgba(245, 240, 232, 0.1);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    color: var(--color-cream);
+    transition: all var(--duration-fast) ease;
+  }
+
+  .delivery-btn:hover {
+    background: rgba(245, 240, 232, 0.15);
+    border-color: rgba(245, 240, 232, 0.2);
+    transform: translateY(-1px);
+  }
+
+  /* ─── Badges ─── */
   .hero-badges {
     display: flex;
     gap: var(--space-xs);
@@ -196,6 +261,9 @@
   }
 
   .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
     font-size: var(--text-xs);
     font-weight: 500;
     color: var(--color-text-muted);
@@ -204,6 +272,11 @@
     border-radius: 100px;
   }
 
+  .badge svg {
+    color: var(--color-amber);
+  }
+
+  /* ─── Scroll indicator ─── */
   .hero-scroll {
     position: absolute;
     bottom: 2rem;

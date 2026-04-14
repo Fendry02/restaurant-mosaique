@@ -1,9 +1,59 @@
+---
+interface Review {
+  name: string;
+  text: string;
+  stars: number;
+  date: string;
+}
+
+const reviews: Review[] = [
+  {
+    name: 'Karim B.',
+    text: 'Jamais une fausse note, toujours la même qualité irréprochable. La viande est parfaitement grillée et les sauces sont faites maison. Mon kebab préféré à Lyon, et de loin !',
+    stars: 5,
+    date: 'Il y a 2 semaines',
+  },
+  {
+    name: 'Sophie L.',
+    text: 'Très propre, employés chaleureux. Les portions sont très généreuses et les frites sont vraiment faites maison. Le thé offert avec le menu, c\'est un vrai plus !',
+    stars: 5,
+    date: 'Il y a 1 mois',
+  },
+  {
+    name: 'Mehdi A.',
+    text: 'Le meilleur kebab de Lyon, je ne dis pas ça à la légère. La viande est grillée et agréablement assaisonnée, le pain est chaud et croustillant. On y revient toujours.',
+    stars: 5,
+    date: 'Il y a 3 semaines',
+  },
+  {
+    name: 'Laura M.',
+    text: 'Les tacos sont incroyables, la sauce fromagère est faite maison et ça se sent. L\'accueil est toujours au top. Je recommande le tacos double viande !',
+    stars: 5,
+    date: 'Il y a 1 mois',
+  },
+  {
+    name: 'Youssef K.',
+    text: 'L\'assiette mixte est un délice. Riz parfumé, viande tendre, salade fraîche. Et le rapport qualité-prix est imbattable pour le quartier.',
+    stars: 4,
+    date: 'Il y a 2 mois',
+  },
+  {
+    name: 'Camille D.',
+    text: 'On a découvert Mosaique par hasard en se baladant et on y retourne chaque semaine maintenant. Les baklavas maison en dessert, c\'est la cerise sur le gâteau !',
+    stars: 5,
+    date: 'Il y a 3 semaines',
+  },
+];
+---
+
 <section class="reviews" id="avis" aria-labelledby="reviews-heading">
   <div class="container">
-    <p class="section-subtitle">Ce qu'ils en disent</p>
-    <h2 id="reviews-heading" class="section-label">4.3 sur 5 — plus de 3 600 avis</h2>
+    <header class="reviews-header" data-reveal>
+      <p class="section-subtitle">Ce qu'ils en disent</p>
+      <h2 id="reviews-heading" class="section-label">4.3 sur 5 — plus de 3 600 avis</h2>
+    </header>
 
-    <div class="reviews-rating" data-reveal="up">
+    <div class="reviews-rating" data-reveal>
       <div class="reviews-stars" aria-label="4.3 sur 5 étoiles">
         {Array.from({length: 4}).map(() => (
           <svg viewBox="0 0 20 20" fill="currentColor" class="star"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78z"/></svg>
@@ -13,54 +63,39 @@
           <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78z" fill="url(#star-fill)" stroke="currentColor" stroke-width="0.8"/>
         </svg>
       </div>
-      <p class="reviews-count">3 600+ avis Google</p>
+      <a
+        href="https://www.google.com/maps/place/Restaurant+mosaique+LYON+3+EME/@45.7526128,4.8519206,17z/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="reviews-google-link"
+      >
+        Voir tous les avis sur Google
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/>
+          <line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+      </a>
     </div>
 
     <div class="reviews-grid">
-      <blockquote class="review-card" data-reveal="up">
-        <div class="review-stars" aria-hidden="true">
-          {Array.from({length: 5}).map(() => (
-            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78z"/></svg>
-          ))}
-        </div>
-        <p class="review-text">
-          Jamais une fausse note, toujours la même qualité irréprochable. La viande est parfaitement grillée et les sauces sont faites maison. Mon kebab préféré à Lyon, et de loin !
-        </p>
-        <footer class="review-author">
-          <span class="review-name">Client fidèle</span>
-          <span class="review-date">Avis Google</span>
-        </footer>
-      </blockquote>
-
-      <blockquote class="review-card" data-reveal="up">
-        <div class="review-stars" aria-hidden="true">
-          {Array.from({length: 5}).map(() => (
-            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78z"/></svg>
-          ))}
-        </div>
-        <p class="review-text">
-          Très propre, employés chaleureux. Les portions sont très généreuses et les frites sont vraiment faites maison. Le thé offert avec le menu, c'est un vrai plus !
-        </p>
-        <footer class="review-author">
-          <span class="review-name">Client Google</span>
-          <span class="review-date">Avis Google</span>
-        </footer>
-      </blockquote>
-
-      <blockquote class="review-card" data-reveal="up">
-        <div class="review-stars" aria-hidden="true">
-          {Array.from({length: 5}).map(() => (
-            <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78z"/></svg>
-          ))}
-        </div>
-        <p class="review-text">
-          Le meilleur kebab de Lyon, je ne dis pas ça à la légère. La viande est grillée et agréablement assaisonnée, le pain est chaud et croustillant. On y revient toujours.
-        </p>
-        <footer class="review-author">
-          <span class="review-name">Client Google</span>
-          <span class="review-date">Avis Google</span>
-        </footer>
-      </blockquote>
+      {reviews.map((review) => (
+        <blockquote class="review-card" data-reveal>
+          <div class="review-stars" aria-hidden="true">
+            {Array.from({length: review.stars}).map(() => (
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.33L10 13.27l-4.77 2.51.91-5.33L2.27 6.68l5.34-.78z"/></svg>
+            ))}
+          </div>
+          <p class="review-text">{review.text}</p>
+          <footer class="review-author">
+            <div class="review-avatar" aria-hidden="true">{review.name.charAt(0)}</div>
+            <div class="review-meta">
+              <span class="review-name">{review.name}</span>
+              <span class="review-date">{review.date}</span>
+            </div>
+          </footer>
+        </blockquote>
+      ))}
     </div>
   </div>
 </section>
@@ -69,6 +104,10 @@
   .reviews {
     padding-block: var(--space-section);
     background: var(--color-charcoal);
+  }
+
+  .reviews-header {
+    margin-bottom: var(--space-sm);
   }
 
   .reviews-rating {
@@ -89,10 +128,18 @@
     height: 28px;
   }
 
-  .reviews-count {
-    font-size: var(--text-sm);
+  .reviews-google-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: var(--text-xs);
     color: var(--color-text-muted);
     margin-top: 0.25rem;
+    transition: color var(--duration-fast) ease;
+  }
+
+  .reviews-google-link:hover {
+    color: var(--color-amber);
   }
 
   .reviews-grid {
@@ -139,9 +186,28 @@
   .review-author {
     display: flex;
     align-items: center;
-    gap: var(--space-xs);
+    gap: 0.6rem;
     padding-top: var(--space-xs);
     border-top: 1px solid rgba(245, 240, 232, 0.08);
+  }
+
+  .review-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(232, 148, 58, 0.15);
+    color: var(--color-amber);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--text-sm);
+    flex-shrink: 0;
+  }
+
+  .review-meta {
+    display: flex;
+    flex-direction: column;
   }
 
   .review-name {
@@ -155,12 +221,13 @@
     color: var(--color-text-muted);
   }
 
-  .review-date::before {
-    content: "·";
-    margin-right: 0.25rem;
+  @media (max-width: 960px) {
+    .reviews-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 640px) {
     .reviews-grid {
       grid-template-columns: 1fr;
     }

@@ -6,10 +6,31 @@ const year = new Date().getFullYear();
   <div class="footer-inner container">
     <div class="footer-brand">
       <span class="footer-logo">Mosaique</span>
-      <p class="footer-tagline">Kebab & Grillades</p>
+      <p class="footer-tagline">Kebab & Grillades · Lyon 3</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="https://www.google.com/maps/place/Restaurant+mosaique+LYON+3+EME/@45.7526128,4.8519206,17z/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Google Maps">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </a>
+      </div>
     </div>
 
     <div class="footer-info">
+      <h3 class="footer-heading">Adresse</h3>
       <address class="footer-address">
         42 avenue Félix Faure<br />
         69003 Lyon
@@ -18,6 +39,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="footer-hours">
+      <h3 class="footer-heading">Horaires</h3>
       <p><strong>Lundi — Samedi</strong><br />11h – 23h</p>
       <p><strong>Dimanche</strong><br />Fermé</p>
     </div>
@@ -58,6 +80,40 @@ const year = new Date().getFullYear();
     font-size: var(--text-sm);
     margin-top: var(--space-xs);
     color: rgba(245, 240, 232, 0.4);
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: var(--space-sm);
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid rgba(245, 240, 232, 0.12);
+    color: rgba(245, 240, 232, 0.5);
+    transition: all var(--duration-fast) ease;
+  }
+
+  .social-link:hover {
+    border-color: var(--color-amber);
+    color: var(--color-amber);
+    background: rgba(232, 148, 58, 0.1);
+  }
+
+  .footer-heading {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-cream);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-sm);
   }
 
   .footer-address {
@@ -101,6 +157,10 @@ const year = new Date().getFullYear();
       grid-template-columns: 1fr;
       gap: var(--space-md);
       text-align: center;
+    }
+
+    .footer-social {
+      justify-content: center;
     }
   }
 </style>

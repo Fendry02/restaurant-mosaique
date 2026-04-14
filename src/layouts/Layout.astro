@@ -48,7 +48,7 @@ const {
       "@type": "Restaurant",
       "name": "Restaurant Mosaique",
       "description": "Kebab artisanal, grillades et spécialités turques à Lyon 3e. Viande à la broche, frites maison, pain fait maison.",
-      "image": [],
+      "url": "https://restaurant-mosaique.fr",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "42 avenue Félix Faure",
@@ -67,6 +67,12 @@ const {
       "priceRange": "€",
       "currenciesAccepted": "EUR",
       "paymentAccepted": "Cash, Visa, Ticket Restaurant",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.3",
+        "reviewCount": "3600",
+        "bestRating": "5"
+      },
       "openingHoursSpecification": [
         { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "opens": "11:00", "closes": "23:00" }
       ],
@@ -77,7 +83,34 @@ const {
             "@type": "MenuSection",
             "name": "Sandwichs",
             "hasMenuItem": [
-              { "@type": "MenuItem", "name": "Kebab", "offers": { "@type": "Offer", "price": "5", "priceCurrency": "EUR" } }
+              { "@type": "MenuItem", "name": "Kebab", "description": "Viande à la broche, salade, tomates, oignons, sauce au choix", "offers": { "@type": "Offer", "price": "6.50", "priceCurrency": "EUR" } },
+              { "@type": "MenuItem", "name": "Américain", "description": "Steak haché, frites, salade, sauce au choix", "offers": { "@type": "Offer", "price": "7.00", "priceCurrency": "EUR" } },
+              { "@type": "MenuItem", "name": "Burger", "description": "Steak, salade, tomates, oignons, cheddar, sauce au choix", "offers": { "@type": "Offer", "price": "7.00", "priceCurrency": "EUR" } }
+            ]
+          },
+          {
+            "@type": "MenuSection",
+            "name": "Tacos",
+            "hasMenuItem": [
+              { "@type": "MenuItem", "name": "Tacos Simple", "offers": { "@type": "Offer", "price": "6.50", "priceCurrency": "EUR" } },
+              { "@type": "MenuItem", "name": "Tacos Double", "offers": { "@type": "Offer", "price": "8.00", "priceCurrency": "EUR" } },
+              { "@type": "MenuItem", "name": "Tacos Triple", "offers": { "@type": "Offer", "price": "9.50", "priceCurrency": "EUR" } }
+            ]
+          },
+          {
+            "@type": "MenuSection",
+            "name": "Assiettes",
+            "hasMenuItem": [
+              { "@type": "MenuItem", "name": "Assiette Kebab", "offers": { "@type": "Offer", "price": "10.00", "priceCurrency": "EUR" } },
+              { "@type": "MenuItem", "name": "Assiette Mixte", "offers": { "@type": "Offer", "price": "12.00", "priceCurrency": "EUR" } }
+            ]
+          },
+          {
+            "@type": "MenuSection",
+            "name": "Menus",
+            "hasMenuItem": [
+              { "@type": "MenuItem", "name": "Menu Sandwich", "offers": { "@type": "Offer", "price": "9.50", "priceCurrency": "EUR" } },
+              { "@type": "MenuItem", "name": "Menu Assiette", "offers": { "@type": "Offer", "price": "13.00", "priceCurrency": "EUR" } }
             ]
           }
         ]
