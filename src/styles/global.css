@@ -2,8 +2,11 @@
 :root {
   /* Palette — charcoal, amber, warm cream */
   --color-charcoal: #1a1714;
-  --color-charcoal-mid: #2d2822;
+  --color-charcoal-mid: #231f1b;
   --color-charcoal-light: #3e3730;
+  --color-paper: #f6f1e7;
+  --color-paper-dark: #ebe3d3;
+  --color-ink: #1a1714;
   --color-amber: #e8943a;
   --color-amber-light: #f0b06a;
   --color-amber-dark: #c47a2a;
@@ -14,10 +17,13 @@
   --color-white: #ffffff;
   --color-text: #f5f0e8;
   --color-text-muted: rgba(245, 240, 232, 0.6);
+  --color-rule: rgba(245, 240, 232, 0.15);
+  --color-rule-warm: rgba(232, 148, 58, 0.25);
 
   /* Typography */
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Outfit', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
 
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
   --text-sm: clamp(0.875rem, 0.82rem + 0.28vw, 1rem);
@@ -25,7 +31,9 @@
   --text-lg: clamp(1.125rem, 1rem + 0.6vw, 1.375rem);
   --text-xl: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem);
   --text-2xl: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
-  --text-hero: clamp(3rem, 1.5rem + 6vw, 6rem);
+  --text-3xl: clamp(2.5rem, 1.8rem + 3.5vw, 5rem);
+  --text-hero: clamp(3rem, 1rem + 8vw, 8.5rem);
+  --text-display: clamp(5rem, 2rem + 14vw, 16rem);
 
   /* Spacing */
   --space-xs: 0.5rem;
@@ -33,10 +41,12 @@
   --space-md: 1.5rem;
   --space-lg: 3rem;
   --space-xl: 5rem;
-  --space-section: clamp(2.5rem, 2rem + 3vw, 5rem);
+  --space-2xl: 8rem;
+  --space-section: clamp(4rem, 3rem + 5vw, 9rem);
 
   /* Layout */
-  --max-width: 72rem;
+  --max-width: 76rem;
+  --max-width-text: 38rem;
   --content-padding: clamp(1.25rem, 1rem + 2vw, 3rem);
 
   /* Motion */
@@ -73,6 +83,19 @@ body {
   color: var(--color-cream);
   background-color: var(--color-charcoal);
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Subtle paper grain for editorial warmth */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 200;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.96  0 0 0 0 0.94  0 0 0 0 0.89  0 0 0 1 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 
 img {
@@ -149,21 +172,135 @@ ul, ol {
   transform: translateY(0);
 }
 
-/* ─── Section titles ─── */
+/* ─── Editorial primitives ─── */
+
+/* Section eyebrow — small caps label above titles */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-weight: 500;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 1.75rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.eyebrow--center {
+  justify-content: center;
+}
+
+/* Section title — editorial display */
 .section-label {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
+  font-weight: 700;
   color: var(--color-cream);
-  text-align: center;
-  line-height: 1.1;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.section-label em {
+  font-style: italic;
+  color: var(--color-amber);
+  font-weight: 700;
 }
 
 .section-subtitle {
-  font-size: var(--text-sm);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   color: var(--color-amber);
   text-align: center;
   margin-top: var(--space-xs);
-  letter-spacing: 0.12em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   font-weight: 500;
+}
+
+/* Rule — editorial hairline */
+.rule {
+  border: 0;
+  border-top: 1px solid var(--color-rule);
+  margin-block: var(--space-md);
+}
+
+.rule--warm {
+  border-top-color: var(--color-rule-warm);
+}
+
+/* Drop cap — first-letter treatment for body text */
+.drop-cap::first-letter {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 4.5em;
+  line-height: 0.82;
+  float: left;
+  margin: 0.08em 0.12em 0 0;
+  color: var(--color-amber);
+  font-weight: 700;
+}
+
+/* Pull-quote — large editorial quote */
+.pull-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 700;
+  font-size: var(--text-2xl);
+  line-height: 1.15;
+  color: var(--color-cream);
+  letter-spacing: -0.01em;
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--color-amber);
+}
+
+/* Numeral — editorial catalog number */
+.numeral {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--color-amber);
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* Meta-line — horizontal magazine meta */
+.meta-line {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.meta-line .meta-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+/* Display numeral — giant editorial stat */
+.display-num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: italic;
+  line-height: 0.82;
+  letter-spacing: -0.04em;
+  color: var(--color-amber);
 }

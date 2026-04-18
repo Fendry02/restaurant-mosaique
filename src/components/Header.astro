@@ -11,7 +11,11 @@ const navItems = [
 <header class="header" id="top">
   <div class="header-inner container">
     <a href="#top" class="logo" aria-label="Restaurant Mosaique — Retour en haut">
-      <span class="logo-text">Mosaique</span>
+      <span class="logo-mark">M</span>
+      <span class="logo-stack">
+        <span class="logo-text">Mosaique</span>
+        <span class="logo-meta">Lyon 03 · depuis Félix Faure</span>
+      </span>
     </a>
 
     <button
@@ -58,16 +62,64 @@ const navItems = [
     height: 4.5rem;
   }
 
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .logo-mark {
+    width: 2.1rem;
+    height: 2.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--color-amber);
+    border-radius: 50%;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--color-amber);
+    transition: background var(--duration-fast) ease, color var(--duration-fast) ease;
+  }
+
+  .logo-stack {
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
   .logo-text {
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+    font-style: italic;
+    font-size: clamp(1.5rem, 1.3rem + 0.8vw, 1.9rem);
     font-weight: 700;
     color: var(--color-cream);
     transition: color var(--duration-fast) ease;
+    letter-spacing: -0.01em;
+  }
+
+  .logo-meta {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-top: 0.2rem;
+  }
+
+  .logo:hover .logo-mark {
+    background: var(--color-amber);
+    color: var(--color-charcoal);
   }
 
   .logo:hover .logo-text {
     color: var(--color-amber);
+  }
+
+  @media (max-width: 520px) {
+    .logo-meta { display: none; }
   }
 
   .nav-list {

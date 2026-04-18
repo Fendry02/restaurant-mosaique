@@ -7,17 +7,19 @@ interface MenuItem {
 }
 
 interface MenuCategory {
+  id: string;
   title: string;
-  icon: string;
+  kicker: string;
   items: MenuItem[];
 }
 
 const categories: MenuCategory[] = [
   {
+    id: 'sandwichs',
     title: 'Sandwichs',
-    icon: '🥖',
+    kicker: 'Au pain maison',
     items: [
-      { name: 'Kebab', price: '6.50', description: 'Viande à la broche, salade, tomates, oignons, sauce au choix' },
+      { name: 'Kebab', price: '6.50', description: 'Viande à la broche, salade, tomates, oignons, sauce au choix', tag: 'Signature' },
       { name: 'Américain', price: '7.00', description: 'Steak haché, frites, salade, sauce au choix' },
       { name: 'Nuggets', price: '6.50', description: 'Nuggets de poulet, salade, sauce au choix' },
       { name: 'Féta', price: '7.50', description: 'Kebab, féta, salade, tomates, sauce au choix' },
@@ -30,8 +32,9 @@ const categories: MenuCategory[] = [
     ],
   },
   {
+    id: 'tacos',
     title: 'Tacos',
-    icon: '🌮',
+    kicker: 'Sauce fromagère maison',
     items: [
       { name: 'Tacos Simple', price: '6.50', description: 'Une viande au choix, frites, sauce fromagère' },
       { name: 'Tacos Double', price: '8.00', description: 'Deux viandes au choix, frites, sauce fromagère', tag: 'Populaire' },
@@ -41,8 +44,9 @@ const categories: MenuCategory[] = [
     ],
   },
   {
+    id: 'assiettes',
     title: 'Assiettes',
-    icon: '🍽️',
+    kicker: 'Avec riz ou frites maison',
     items: [
       { name: 'Kebab', price: '10.00', description: 'Viande à la broche, riz ou frites, salade', tag: 'Populaire' },
       { name: 'Mixte', price: '12.00', description: 'Kebab + brochette, riz ou frites, salade', tag: 'Généreux' },
@@ -54,8 +58,9 @@ const categories: MenuCategory[] = [
     ],
   },
   {
+    id: 'menus',
     title: 'Menus',
-    icon: '📋',
+    kicker: 'Thé turc offert',
     items: [
       { name: 'Menu Sandwich', price: '9.50', description: 'Sandwich au choix + frites + boisson', tag: 'Thé offert' },
       { name: 'Menu Tacos', price: '10.50', description: 'Tacos au choix + boisson', tag: 'Thé offert' },
@@ -64,8 +69,9 @@ const categories: MenuCategory[] = [
     ],
   },
   {
+    id: 'boissons',
     title: 'Boissons',
-    icon: '🥤',
+    kicker: 'Fraîches & traditionnelles',
     items: [
       { name: 'Coca-Cola / Fanta / Sprite', price: '2.00', description: '33cl' },
       { name: 'Bouteille 1.5L', price: '3.00', description: 'Coca-Cola, Fanta, Sprite, Oasis' },
@@ -76,8 +82,9 @@ const categories: MenuCategory[] = [
     ],
   },
   {
+    id: 'desserts',
     title: 'Desserts',
-    icon: '🍰',
+    kicker: 'Baklava maison',
     items: [
       { name: 'Baklava', price: '3.00', description: 'Pâtisserie feuilletée aux noix et miel', tag: 'Maison' },
       { name: 'Tiramisu', price: '3.50', description: 'Tiramisu maison' },
@@ -86,53 +93,66 @@ const categories: MenuCategory[] = [
     ],
   },
 ];
+
+const pad = (n: number) => String(n).padStart(2, '0');
 ---
 
 <section class="menu" id="carte" aria-labelledby="menu-heading">
   <div class="container">
+    <!-- Editorial header -->
     <header class="menu-header" data-reveal>
-      <p class="section-subtitle">Notre carte</p>
-      <h2 id="menu-heading" class="section-label">Fait maison, fait avec passion</h2>
-      <p class="menu-tagline">
-        Viande grillée à la broche chaque jour, frites fraîches coupées sur place,<br />
-        pain cuit au moment. Thé offert avec chaque menu.
+      <div class="menu-header-top">
+        <p class="eyebrow">La Carte · Chapitre I</p>
+        <span class="menu-issue">2026 · Édition courante</span>
+      </div>
+      <h2 id="menu-heading" class="menu-title">
+        Fait maison, <em>fait avec passion</em>
+      </h2>
+      <p class="menu-lede">
+        Viande grillée à la broche chaque jour, frites fraîches coupées sur place,
+        pain cuit au moment. <strong>Thé turc offert</strong> avec chaque menu.
       </p>
+      <hr class="rule rule--warm" />
     </header>
 
-    <!-- Category tabs for navigation -->
+    <!-- Category tabs -->
     <nav class="menu-tabs" aria-label="Catégories du menu" data-reveal>
-      {categories.map((cat) => (
-        <a href={`#cat-${cat.title.toLowerCase().replace(/\s/g, '-')}`} class="menu-tab">
-          <span class="tab-icon" aria-hidden="true">{cat.icon}</span>
+      {categories.map((cat, i) => (
+        <a href={`#cat-${cat.id}`} class="menu-tab">
+          <span class="tab-num">{pad(i + 1)}</span>
           <span class="tab-label">{cat.title}</span>
         </a>
       ))}
     </nav>
 
-    {categories.map((cat) => (
-      <div class="menu-category" id={`cat-${cat.title.toLowerCase().replace(/\s/g, '-')}`} data-reveal>
-        <h3 class="category-title">
-          <span class="category-icon" aria-hidden="true">{cat.icon}</span>
-          {cat.title}
-        </h3>
-        <div class="menu-grid" role="list" data-reveal-stagger>
-          {cat.items.map((item) => (
-            <article class="item-card" role="listitem">
-              <div class="item-header">
+    {categories.map((cat, catIndex) => (
+      <div class="menu-category" id={`cat-${cat.id}`} data-reveal>
+        <header class="category-header">
+          <div class="category-head-left">
+            <span class="numeral">Chapitre&nbsp;{pad(catIndex + 1)}</span>
+            <h3 class="category-title">{cat.title}</h3>
+          </div>
+          <p class="category-kicker">{cat.kicker}</p>
+        </header>
+
+        <ul class="menu-list" role="list" data-reveal-stagger>
+          {cat.items.map((item, i) => (
+            <li class="menu-item" role="listitem">
+              <span class="item-num" aria-hidden="true">Nº {pad(i + 1)}</span>
+              <div class="item-body">
                 <h4 class="item-name">
                   {item.name}
                   {item.tag && <span class="item-tag">{item.tag}</span>}
                 </h4>
-                <span class="item-dots"></span>
-                <span class="item-price" aria-label={`${item.price} euros`}>
-                  {item.price}€
-                </span>
+                {item.description && <p class="item-desc">{item.description}</p>}
               </div>
-              {item.description && <p class="item-desc">{item.description}</p>}
-            </article>
+              <span class="item-dots" aria-hidden="true"></span>
+              <span class="item-price" aria-label={`${item.price} euros`}>
+                {item.price}<span class="item-price-cur">€</span>
+              </span>
+            </li>
           ))}
-          {cat.items.length % 2 !== 0 && <div class="item-card item-card--empty" aria-hidden="true"></div>}
-        </div>
+        </ul>
       </div>
     ))}
   </div>
@@ -141,176 +161,272 @@ const categories: MenuCategory[] = [
 <style>
   .menu {
     padding-block: var(--space-section);
-    background: var(--color-charcoal-mid);
+    background: var(--color-charcoal);
+    position: relative;
   }
 
+  /* Editorial header */
   .menu-header {
-    margin-bottom: var(--space-lg);
-  }
-
-  .menu-tagline {
-    text-align: center;
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-    margin-top: var(--space-sm);
-    line-height: 1.7;
-  }
-
-  /* ─── Category tabs ─── */
-  .menu-tabs {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    max-width: 48rem;
     margin-bottom: var(--space-xl);
   }
 
-  .menu-tab {
+  .menu-header-top {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    gap: 0.35rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid rgba(232, 148, 58, 0.15);
-    border-radius: 100px;
-    font-size: var(--text-xs);
-    font-weight: 500;
-    color: var(--color-text-muted);
-    transition: all var(--duration-fast) ease;
-    text-decoration: none;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    flex-wrap: wrap;
   }
 
-  .menu-tab:hover {
-    background: rgba(232, 148, 58, 0.1);
-    border-color: rgba(232, 148, 58, 0.3);
+  .menu-issue {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .menu-title {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--color-cream);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-md);
+  }
+
+  .menu-title em {
+    font-style: italic;
     color: var(--color-amber);
   }
 
-  .tab-icon {
-    font-size: 1rem;
+  .menu-lede {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    line-height: 1.55;
+    max-width: 36rem;
+  }
+
+  .menu-lede strong {
+    color: var(--color-cream);
+    font-weight: 500;
+  }
+
+  /* Tabs */
+  .menu-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: var(--space-xl);
+    border-top: 1px solid var(--color-rule);
+    border-bottom: 1px solid var(--color-rule);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .menu-tabs::-webkit-scrollbar { display: none; }
+
+  .menu-tab {
+    flex: 1;
+    min-width: max-content;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 1rem 1.25rem;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-muted);
+    transition: all var(--duration-fast) ease;
+    border-right: 1px solid var(--color-rule);
+    position: relative;
+  }
+
+  .menu-tab:last-child { border-right: none; }
+
+  .menu-tab:hover {
+    background: rgba(232, 148, 58, 0.06);
+    color: var(--color-cream);
+  }
+
+  .menu-tab::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--color-amber);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-normal) var(--ease-out-expo);
+  }
+
+  .menu-tab:hover::after { transform: scaleX(1); }
+
+  .tab-num {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: var(--color-amber);
+    font-weight: 500;
   }
 
   .tab-label {
-    letter-spacing: 0.02em;
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 700;
+    letter-spacing: -0.01em;
   }
 
-  /* ─── Categories ─── */
+  /* Categories */
   .menu-category {
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-2xl);
   }
 
-  .menu-category:last-of-type {
-    margin-bottom: 0;
+  .menu-category:last-of-type { margin-bottom: 0; }
+
+  .category-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-md);
+    align-items: end;
+    padding-bottom: var(--space-md);
+    margin-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-rule-warm);
+  }
+
+  .category-head-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
   }
 
   .category-title {
     font-family: var(--font-display);
-    font-size: var(--text-xl);
+    font-style: italic;
+    font-size: var(--text-3xl);
     font-weight: 700;
     color: var(--color-cream);
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
-    margin-bottom: var(--space-md);
-    padding-bottom: var(--space-xs);
-    border-bottom: 1px solid rgba(232, 148, 58, 0.2);
+    line-height: 0.9;
+    letter-spacing: -0.02em;
   }
 
-  .category-icon {
-    font-size: 1.2em;
+  .category-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-amber);
+    padding-bottom: 0.4rem;
   }
 
-  /* ─── Grid ─── */
-  .menu-grid {
+  /* List */
+  .menu-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1px;
-    background: rgba(232, 148, 58, 0.1);
-    border: 1px solid rgba(232, 148, 58, 0.1);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
+    column-gap: var(--space-xl);
+    row-gap: 0;
   }
 
-  .item-card {
-    background: var(--color-charcoal-mid);
-    padding: var(--space-md);
-    transition: background var(--duration-fast) ease;
-  }
-
-  .item-card:hover {
-    background: var(--color-charcoal-light);
-  }
-
-  .item-card--empty {
-    background: var(--color-charcoal-mid);
-    pointer-events: none;
-  }
-
-  .item-header {
-    display: flex;
+  .menu-item {
+    display: grid;
+    grid-template-columns: 3rem 1fr auto auto;
+    gap: 0.75rem;
     align-items: baseline;
-    gap: 0.5rem;
-    margin-bottom: 0.35rem;
+    padding-block: 1.1rem;
+    border-bottom: 1px dashed rgba(245, 240, 232, 0.09);
+    transition: background var(--duration-fast) ease;
+    padding-inline: 0.5rem;
+    margin-inline: -0.5rem;
+    border-radius: 2px;
+  }
+
+  .menu-item:hover {
+    background: rgba(232, 148, 58, 0.04);
+  }
+
+  .item-num {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--color-amber);
+    opacity: 0.7;
+    font-weight: 500;
+    align-self: center;
+  }
+
+  .item-body {
+    min-width: 0;
   }
 
   .item-name {
-    font-family: var(--font-body);
+    font-family: var(--font-display);
     font-size: var(--text-lg);
     font-weight: 700;
     color: var(--color-cream);
     line-height: 1.2;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     flex-wrap: wrap;
-    white-space: nowrap;
-  }
-
-  .item-dots {
-    flex: 1;
-    border-bottom: 1px dotted rgba(245, 240, 232, 0.15);
-    min-width: 1rem;
-    align-self: center;
-    margin-bottom: 0.2em;
   }
 
   .item-tag {
-    font-size: 0.65rem;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    background: var(--color-amber);
-    color: var(--color-charcoal);
-    padding: 0.15rem 0.5rem;
-    border-radius: 100px;
-    white-space: nowrap;
-  }
-
-  .item-price {
-    font-family: var(--font-display);
-    font-size: var(--text-lg);
-    font-weight: 700;
+    letter-spacing: 0.1em;
     color: var(--color-amber);
+    border: 1px solid var(--color-rule-warm);
+    padding: 0.15rem 0.45rem;
+    border-radius: 2px;
     white-space: nowrap;
-    flex-shrink: 0;
   }
 
   .item-desc {
     font-size: var(--text-sm);
     color: var(--color-text-muted);
     line-height: 1.5;
+    margin-top: 0.3rem;
   }
 
-  @media (max-width: 640px) {
-    .menu-grid {
-      grid-template-columns: 1fr;
-    }
+  .item-dots {
+    border-bottom: 1px dotted rgba(245, 240, 232, 0.18);
+    align-self: center;
+    min-width: 1rem;
+    margin-bottom: 0.15em;
+  }
 
-    .menu-tabs {
-      gap: 0.35rem;
-    }
+  .item-price {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    font-style: italic;
+    color: var(--color-amber);
+    white-space: nowrap;
+    align-self: center;
+  }
 
-    .menu-tab {
-      padding: 0.4rem 0.75rem;
+  .item-price-cur {
+    font-style: normal;
+    font-size: 0.7em;
+    margin-left: 0.1em;
+    opacity: 0.8;
+  }
+
+  @media (max-width: 820px) {
+    .menu-list { grid-template-columns: 1fr; column-gap: 0; }
+    .category-header { grid-template-columns: 1fr; align-items: start; }
+    .category-kicker { padding-bottom: 0; }
+  }
+
+  @media (max-width: 480px) {
+    .menu-item {
+      grid-template-columns: 2.5rem 1fr auto;
     }
+    .item-dots { display: none; }
   }
 </style>

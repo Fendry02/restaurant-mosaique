@@ -1,60 +1,56 @@
 <section class="story" id="histoire" aria-labelledby="story-heading">
   <div class="container">
+    <header class="story-head" data-reveal>
+      <p class="eyebrow">Chapitre II · Notre Histoire</p>
+      <h2 id="story-heading" class="story-title">
+        Le goût authentique,<br />
+        <em>au cœur de Lyon 3<sup>e</sup></em>
+      </h2>
+    </header>
+
     <div class="story-layout">
-      <div class="story-visual" data-reveal="scale">
-        <div class="story-photo-stack">
-          <div class="story-photo story-photo--main">
-            <div class="story-photo-placeholder">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                <circle cx="8.5" cy="8.5" r="1.5"/>
-                <polyline points="21 15 16 10 5 21"/>
-              </svg>
-              <span>Photo du restaurant</span>
-            </div>
-          </div>
-          <div class="story-photo story-photo--accent">
-            <div class="story-photo-placeholder story-photo-placeholder--warm">
-              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                <circle cx="8.5" cy="8.5" r="1.5"/>
-                <polyline points="21 15 16 10 5 21"/>
-              </svg>
-              <span>La broche</span>
-            </div>
-          </div>
-        </div>
-        <div class="story-stat">
-          <span class="stat-number">3600+</span>
-          <span class="stat-label">avis Google</span>
+      <div class="story-text">
+        <p class="story-lede drop-cap" data-reveal>
+          Chez Mosaique, chaque jour commence pareil : la broche tourne,
+          les frites sont coupées à la main, le pain est pétri et cuit
+          sur place. Pas de raccourcis, pas de surgelés.
+        </p>
+
+        <blockquote class="pull-quote story-quote" data-reveal="left">
+          « Des recettes transmises avec soin, des ingrédients sélectionnés
+          chaque matin, et une équipe qui met du cœur dans chaque assiette. »
+        </blockquote>
+
+        <p class="story-body" data-reveal>
+          Du kebab classique aux spécialités comme l'Adana ou le Köfte,
+          on cuisine ce qu'on aime manger. Depuis le 42 avenue Félix Faure,
+          on régale le quartier — et au-delà. Passez nous voir, on vous
+          accueille avec le sourire et un thé.
+        </p>
+
+        <div class="story-signature" data-reveal>
+          <span class="sig-line"></span>
+          <span class="sig-text">L'équipe Mosaique · Lyon 03</span>
         </div>
       </div>
 
-      <div class="story-text" data-reveal="right">
-        <p class="section-subtitle" style="text-align:left">Notre histoire</p>
-        <h2 id="story-heading" class="section-label" style="text-align:left">
-          Le goût authentique,<br />au cœur de Lyon 3
-        </h2>
-        <div class="story-body">
-          <p>
-            Chez Mosaique, chaque jour commence pareil : la broche tourne,
-            les frites sont coupées à la main, le pain est pétri et cuit
-            sur place. Pas de raccourcis, pas de surgelés.
-          </p>
-          <p>
-            Notre secret ? Des recettes transmises avec soin, des
-            ingrédients sélectionnés chaque matin, et une équipe qui met
-            du cœur dans chaque assiette. Du kebab classique aux
-            spécialités comme l'Adana ou le Köfte, on cuisine ce qu'on
-            aime manger.
-          </p>
-          <p>
-            Depuis le 42 avenue Félix Faure, on régale le quartier — et
-            au-delà. Passez nous voir, on vous accueille avec le sourire
-            et un thé.
-          </p>
+      <aside class="story-aside" data-reveal="right">
+        <!-- Giant editorial stat -->
+        <div class="story-stat-block">
+          <span class="stat-kicker">Sur Google</span>
+          <span class="display-num story-stat-num">3.6<span class="stat-unit">k+</span></span>
+          <span class="stat-descr">avis clients, note moyenne de 4,3 / 5</span>
         </div>
-      </div>
+
+        <hr class="rule" />
+
+        <ul class="story-facts">
+          <li><span class="fact-num">01</span><span>Broche allumée dès le matin</span></li>
+          <li><span class="fact-num">02</span><span>Frites fraîches coupées sur place</span></li>
+          <li><span class="fact-num">03</span><span>Pain pétri et cuit au moment</span></li>
+          <li><span class="fact-num">04</span><span>Viande halal, sauces maison</span></li>
+        </ul>
+      </aside>
     </div>
   </div>
 </section>
@@ -63,143 +59,187 @@
   .story {
     padding-block: var(--space-section);
     background: var(--color-charcoal-mid);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Watermark behind */
+  .story::before {
+    content: 'II';
+    position: absolute;
+    right: -3vw;
+    bottom: -8vh;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: clamp(20rem, 40vw, 40rem);
+    line-height: 0.7;
+    color: var(--color-amber);
+    opacity: 0.04;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .story > .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .story-head {
+    max-width: 48rem;
+    margin-bottom: var(--space-xl);
+  }
+
+  .story-title {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: 700;
+    color: var(--color-cream);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-top: var(--space-md);
+  }
+
+  .story-title em {
+    font-style: italic;
+    color: var(--color-amber);
   }
 
   .story-layout {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1.4fr 1fr;
     gap: var(--space-xl);
-    align-items: center;
+    align-items: start;
   }
 
-  /* ─── Visual column ─── */
-  .story-visual {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--space-md);
-  }
-
-  .story-photo-stack {
-    position: relative;
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .story-photo--main {
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    border: 1px solid rgba(232, 148, 58, 0.15);
-  }
-
-  .story-photo--accent {
-    position: absolute;
-    bottom: -1rem;
-    right: -1.5rem;
-    width: 45%;
-    aspect-ratio: 1;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    border: 3px solid var(--color-charcoal-mid);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  }
-
-  .story-photo-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    background: linear-gradient(135deg, var(--color-charcoal) 0%, var(--color-charcoal-light) 100%);
-    color: rgba(245, 240, 232, 0.3);
-    font-size: var(--text-xs);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-  }
-
-  .story-photo-placeholder--warm {
-    background: linear-gradient(135deg, #3E2A1A 0%, #5C3A20 50%, #4A2E18 100%);
-  }
-
-  .story-stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: var(--space-sm) var(--space-md);
-    background: rgba(232, 148, 58, 0.08);
-    border: 1px solid rgba(232, 148, 58, 0.15);
-    border-radius: var(--radius-lg);
-  }
-
-  .stat-number {
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    font-weight: 700;
-    color: var(--color-amber);
-  }
-
-  .stat-label {
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 500;
-  }
-
-  /* ─── Text column ─── */
+  /* Text column */
   .story-text {
-    max-width: 36rem;
+    max-width: 38rem;
   }
 
-  .story .section-label {
+  .story-lede {
+    font-size: var(--text-lg);
     color: var(--color-cream);
+    line-height: 1.7;
+  }
+
+  .story-lede::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  .story-quote {
+    margin: var(--space-lg) 0;
+    font-size: var(--text-xl);
   }
 
   .story-body {
-    margin-top: var(--space-md);
-  }
-
-  .story-body p {
+    font-size: var(--text-base);
     color: var(--color-text-muted);
     line-height: 1.8;
   }
 
-  .story-body p + p {
-    margin-top: var(--space-sm);
+  .story-signature {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: var(--space-lg);
   }
 
+  .sig-line {
+    width: 3rem;
+    height: 1px;
+    background: var(--color-amber);
+  }
 
-  @media (max-width: 768px) {
+  .sig-text {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  /* Aside column */
+  .story-aside {
+    position: sticky;
+    top: 6rem;
+    padding: var(--space-lg) var(--space-md);
+    border: 1px solid var(--color-rule-warm);
+    background: rgba(26, 23, 20, 0.4);
+    border-radius: 2px;
+  }
+
+  .story-stat-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .stat-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .story-stat-num {
+    font-size: clamp(4.5rem, 9vw, 7rem);
+    display: flex;
+    align-items: baseline;
+    gap: 0.15rem;
+  }
+
+  .stat-unit {
+    font-size: 0.5em;
+    color: var(--color-amber);
+    opacity: 0.7;
+  }
+
+  .stat-descr {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    max-width: 20ch;
+  }
+
+  .story-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .story-facts li {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0.75rem;
+    align-items: baseline;
+    padding-block: 0.9rem;
+    font-size: var(--text-sm);
+    color: var(--color-cream);
+    border-bottom: 1px dashed rgba(245, 240, 232, 0.09);
+  }
+
+  .story-facts li:last-child { border-bottom: none; }
+
+  .fact-num {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: var(--color-amber);
+    font-weight: 500;
+  }
+
+  @media (max-width: 900px) {
     .story-layout {
       grid-template-columns: 1fr;
-      text-align: center;
+      gap: var(--space-lg);
     }
-
-    .story-text .section-subtitle,
-    .story-text .section-label {
-      text-align: center;
-    }
-
-    .story-visual {
-      order: -1;
-    }
-
-    .story-photo-stack {
-      max-width: 240px;
-    }
-
-    .story-photo--accent {
-      right: -1rem;
-    }
-
-    .story-highlights {
-      align-items: center;
+    .story-aside {
+      position: static;
     }
   }
 </style>
