@@ -10,14 +10,14 @@ interface GalleryItem {
 const items: GalleryItem[] = [
   {
     label: 'La broche',
-    caption: 'Viande marinée, grillée à la broche dès le matin',
+    caption: 'Viande à la broche, grillée toute la journée',
     credit: 'Plat nº 01',
     gradient: 'linear-gradient(135deg, #8B4513 0%, #D2691E 50%, #A0522D 100%)',
     span: 'hero',
   },
   {
-    label: 'Frites maison',
-    caption: 'Pommes de terre coupées sur place',
+    label: 'Les frites',
+    caption: 'L\'accompagnement classique du kebab',
     credit: 'Accompagnement',
     gradient: 'linear-gradient(135deg, #DAA520 0%, #F0C040 50%, #CD853F 100%)',
   },
@@ -29,23 +29,17 @@ const items: GalleryItem[] = [
     span: 'tall',
   },
   {
-    label: 'Pain frais',
-    caption: 'Pétri et cuit au moment',
-    credit: 'Fait maison',
+    label: 'Pain turc',
+    caption: 'Servi chaud avec chaque sandwich',
+    credit: 'Sandwich',
     gradient: 'linear-gradient(135deg, #D2B48C 0%, #C4A070 50%, #B8860B 100%)',
   },
   {
-    label: 'Baklava',
-    caption: 'Pâtisserie feuilletée aux noix & miel',
-    credit: 'Dessert',
-    gradient: 'linear-gradient(135deg, #CD853F 0%, #DEB887 50%, #D2691E 100%)',
+    label: 'Tacos',
+    caption: 'Viande, frites et sauce fromagère',
+    credit: 'Populaire',
+    gradient: 'linear-gradient(135deg, #3E2C1F 0%, #6B3A24 50%, #8B4513 100%)',
     span: 'wide',
-  },
-  {
-    label: 'Notre salle',
-    caption: '42 avenue Félix Faure, Lyon 03',
-    credit: 'Lieu',
-    gradient: 'linear-gradient(135deg, #2D2822 0%, #3E3730 50%, #4A3F35 100%)',
   },
 ];
 ---
@@ -55,14 +49,14 @@ const items: GalleryItem[] = [
     <header class="gallery-head" data-reveal>
       <div class="gallery-head-top">
         <p class="eyebrow">Chapitre IV · En Images</p>
-        <span class="gallery-count">06 planches</span>
+        <span class="gallery-count">05 planches</span>
       </div>
       <h2 id="gallery-heading" class="gallery-title">
         Un aperçu <em>de Mosaique</em>
       </h2>
       <p class="gallery-lede">
-        Feuilletez — de la broche au baklava, des frites au pain,
-        ce qui fait le quotidien de la maison.
+        Feuilletez — de la broche au dessert, ce qui fait
+        le quotidien de la maison.
       </p>
     </header>
 

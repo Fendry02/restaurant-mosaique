@@ -17,7 +17,7 @@ const categories: MenuCategory[] = [
   {
     id: 'sandwichs',
     title: 'Sandwichs',
-    kicker: 'Au pain maison',
+    kicker: 'Pain turc chaud',
     items: [
       { name: 'Kebab', price: '6.50', description: 'Viande à la broche, salade, tomates, oignons, sauce au choix', tag: 'Signature' },
       { name: 'Américain', price: '7.00', description: 'Steak haché, frites, salade, sauce au choix' },
@@ -34,7 +34,7 @@ const categories: MenuCategory[] = [
   {
     id: 'tacos',
     title: 'Tacos',
-    kicker: 'Sauce fromagère maison',
+    kicker: 'Sauce fromagère généreuse',
     items: [
       { name: 'Tacos Simple', price: '6.50', description: 'Une viande au choix, frites, sauce fromagère' },
       { name: 'Tacos Double', price: '8.00', description: 'Deux viandes au choix, frites, sauce fromagère', tag: 'Populaire' },
@@ -46,7 +46,7 @@ const categories: MenuCategory[] = [
   {
     id: 'assiettes',
     title: 'Assiettes',
-    kicker: 'Avec riz ou frites maison',
+    kicker: 'Avec riz ou frites',
     items: [
       { name: 'Kebab', price: '10.00', description: 'Viande à la broche, riz ou frites, salade', tag: 'Populaire' },
       { name: 'Mixte', price: '12.00', description: 'Kebab + brochette, riz ou frites, salade', tag: 'Généreux' },
@@ -60,35 +60,33 @@ const categories: MenuCategory[] = [
   {
     id: 'menus',
     title: 'Menus',
-    kicker: 'Thé turc offert',
+    kicker: 'Formules complètes',
     items: [
-      { name: 'Menu Sandwich', price: '9.50', description: 'Sandwich au choix + frites + boisson', tag: 'Thé offert' },
-      { name: 'Menu Tacos', price: '10.50', description: 'Tacos au choix + boisson', tag: 'Thé offert' },
-      { name: 'Menu Assiette', price: '13.00', description: 'Assiette au choix + boisson', tag: 'Thé offert' },
+      { name: 'Menu Sandwich', price: '9.50', description: 'Sandwich au choix + frites + boisson' },
+      { name: 'Menu Tacos', price: '10.50', description: 'Tacos au choix + boisson' },
+      { name: 'Menu Assiette', price: '13.00', description: 'Assiette au choix + boisson' },
       { name: 'Menu Enfant', price: '6.50', description: 'Nuggets ou cordon bleu + frites + boisson' },
     ],
   },
   {
     id: 'boissons',
     title: 'Boissons',
-    kicker: 'Fraîches & traditionnelles',
+    kicker: 'Sodas & spécialités turques',
     items: [
       { name: 'Coca-Cola / Fanta / Sprite', price: '2.00', description: '33cl' },
       { name: 'Bouteille 1.5L', price: '3.00', description: 'Coca-Cola, Fanta, Sprite, Oasis' },
       { name: 'Eau minérale', price: '1.50', description: '50cl' },
       { name: 'Ayran', price: '2.00', description: 'Boisson lactée traditionnelle turque' },
-      { name: 'Thé turc', price: '1.50', description: 'Offert avec les menus' },
+      { name: 'Thé turc', price: '1.50', description: 'Servi chaud en verre traditionnel' },
       { name: 'Jus de fruits', price: '2.50', description: 'Orange, pomme, mangue' },
     ],
   },
   {
     id: 'desserts',
     title: 'Desserts',
-    kicker: 'Baklava maison',
+    kicker: 'Pour finir en douceur',
     items: [
-      { name: 'Baklava', price: '3.00', description: 'Pâtisserie feuilletée aux noix et miel', tag: 'Maison' },
-      { name: 'Tiramisu', price: '3.50', description: 'Tiramisu maison' },
-      { name: 'Fondant chocolat', price: '3.50', description: 'Servi tiède' },
+      { name: 'Fondant chocolat', price: '3.50', description: 'Servi tiède', tag: 'Populaire' },
       { name: 'Glaces', price: '2.50', description: 'Deux boules au choix' },
     ],
   },
@@ -106,11 +104,11 @@ const pad = (n: number) => String(n).padStart(2, '0');
         <span class="menu-issue">2026 · Édition courante</span>
       </div>
       <h2 id="menu-heading" class="menu-title">
-        Fait maison, <em>fait avec passion</em>
+        La carte, <em>simple et généreuse</em>
       </h2>
       <p class="menu-lede">
-        Viande grillée à la broche chaque jour, frites fraîches coupées sur place,
-        pain cuit au moment. <strong>Thé turc offert</strong> avec chaque menu.
+        Kebab, tacos, assiettes, grillades — une carte complète à
+        <strong>prix doux</strong>, sur place ou à emporter.
       </p>
       <hr class="rule rule--warm" />
     </header>
